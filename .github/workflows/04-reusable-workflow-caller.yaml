@@ -1,0 +1,25 @@
+name: 04-resusable-workflow-caller
+
+on:
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  call-workflow-A:
+    uses: thomas-more-devops/github-actions-demo/.github/workflows/05-reusable-workflow-called.yaml@main
+    with:
+      username: Thomas
+    secrets:
+      token: ${{ secrets.TOKEN }}
+
+  call-workflow-B:
+    uses: thomas-more-devops/github-actions-demo/.github/workflows/05-reusable-workflow-called.yaml@main
+    with:
+      username: More
+    secrets:
+      token: ${{ secrets.TOKEN }}
